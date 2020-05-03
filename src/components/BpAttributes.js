@@ -22,7 +22,7 @@ const BpAttributes = ({mainAttribute, subAttribute}) => {
                     <Text>{subAttribute}</Text>
                 </View>
                 <View style = {styles.inputBoxes} >
-                    <TextInput style={styles.inputStyle} placeholder= "0 0 0"  />
+                    <TextInput style={styles.inputStyle} placeholder= "0 0 0" maxLength = {3} keyboardType={'numeric'} />
                 </View>
             </View>
         )
