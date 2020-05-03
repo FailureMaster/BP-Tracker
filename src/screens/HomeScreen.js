@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet } from 'react-native'
-
+import BpAttribute from '../components/BpAttributes'
 
 const HomeScreen = () => {
     return (
@@ -11,6 +11,11 @@ const HomeScreen = () => {
                     source={require('../assets/img/bp_img.png')}
                 />
 
+            </View>
+            <View style={styles.bpAttribute}>
+                <BpAttribute mainAttribute="SYS" subAttribute="mmHg"/>
+                <BpAttribute mainAttribute="DIA" subAttribute="mmHg"/>
+                <BpAttribute mainAttribute="PULSE" subAttribute="/min"/>
             </View>
         </View>
     )
@@ -27,6 +32,10 @@ const HomeScreen = () => {
         tinyLogo: {
             width: 175,
             height: 150,
+            
+        },bpAttribute:{
+            padding: 50,
+            marginTop: 20
         }
     })
 export default HomeScreen
