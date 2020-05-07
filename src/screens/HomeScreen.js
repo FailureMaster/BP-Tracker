@@ -5,9 +5,7 @@ import BpAttribute from '../components/BpAttributes'
 const HomeScreen = () => {
     return (
         <View>
-            <View style={styles.container}>
 
-            </View>
             <View style={styles.bpAttribute}>
                 <BpAttribute />
             </View>
