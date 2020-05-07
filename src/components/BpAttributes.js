@@ -41,39 +41,41 @@ const BpAttributes = ({mainAttribute, subAttribute}) => {
     }else{
         return (
             <View style={styles.container}>
-                {result == '' &&
-                    <Image
-                        style={styles.tinyLogo}
-                        source={require('../assets/img/bp_img.png')}
-                    />
-                }
-                {result == 'noResult' &&
-                    <Image
-                        style={styles.tinyLogo}
-                        source={require('../assets/img/bp_img.png')}
-                    />
-                    
-                }
-                {result == 'normal' &&
-                    <Image
-                        style={styles.tinyLogo}
-                        source={require('../assets/img/normal_result.png')}
-                    />
-                }
+                <View style={styles.imgContainer}>
+                    {result == '' &&
+                        <Image
+                            style={styles.tinyLogo}
+                            source={require('../assets/img/bp_img.png')}
+                        />
+                    }
+                    {result == 'noResult' &&
+                        <Image
+                            style={styles.tinyLogo}
+                            source={require('../assets/img/bp_img.png')}
+                        />
+                        
+                    }
+                    {result == 'normal' &&
+                        <Image
+                            style={styles.tinyLogo}
+                            source={require('../assets/img/normal_result.png')}
+                        />
+                    }
 
-                {result == 'preHighblood' &&
-                    <Image
-                        style={styles.tinyLogo}
-                        source={require('../assets/img/lowblood_result.png')}
-                    />
-                }
+                    {result == 'preHighblood' &&
+                        <Image
+                            style={styles.tinyLogo}
+                            source={require('../assets/img/lowblood_result.png')}
+                        />
+                    }
 
-                {result == 'HighBlood' &&
-                    <Image
-                        style={styles.tinyLogo}
-                        source={require('../assets/img/highblood_result.png')}
-                    />
+                    {result == 'HighBlood' &&
+                        <Image
+                            style={styles.tinyLogo}
+                            source={require('../assets/img/highblood_result.png')}
+                        />
                 }
+                </View>
                 <View style = {styles.subcontainer}>
                     <View style={styles.coreAttrib}>
                         <Text style={styles.mainAttributeText}  >SYS</Text>
@@ -92,9 +94,9 @@ const BpAttributes = ({mainAttribute, subAttribute}) => {
                         <Text>mmHg</Text>
                     </View>
                     <View style = {styles.inputBoxes} >
-                    <TextInput style={styles.inputStyle} placeholder= "0 0 0" maxLength = {3} keyboardType={'numeric'} 
-                        onChangeText = {(newVal) => setDia(newVal)}
-                    />
+                        <TextInput style={styles.inputStyle} placeholder= "0 0 0" maxLength = {3} keyboardType={'numeric'} 
+                            onChangeText = {(newVal) => setDia(newVal)}
+                        />
                     </View>
                 </View>
                 <View style = {styles.subcontainer}>
@@ -105,7 +107,7 @@ const BpAttributes = ({mainAttribute, subAttribute}) => {
                     <View style = {styles.inputBoxes} >
                         <TextInput style={styles.inputStyle} placeholder= "0 0 0" maxLength = {3} keyboardType={'numeric'} 
                         onChangeText = {(newVal) => setHertRate(newVal)}
-                    />
+                        />
                     </View>
                 </View>
                 <Button 
