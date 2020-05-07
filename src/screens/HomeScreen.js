@@ -3,6 +3,10 @@ import { View, Text, Image, StyleSheet } from 'react-native'
 import BpAttribute from '../components/BpAttributes'
 
 const HomeScreen = () => {
+    const sysData   = {mainAttribute: "SYS", subAttribute:"mmHg", identifier: 111}
+    const diaData   = {mainAttribute: "DIA", subAttribute:"mmHg", identifier: 222}
+    const pulseData = {mainAttribute: "PULSE", subAttribute:"/min", identifier: 333}
+        
     return (
         <View>
             <View style={styles.container}>
@@ -13,9 +17,9 @@ const HomeScreen = () => {
 
             </View>
             <View style={styles.bpAttribute}>
-                <BpAttribute mainAttribute="SYS" subAttribute="mmHg"/>
-                <BpAttribute mainAttribute="DIA" subAttribute="mmHg"/>
-                <BpAttribute mainAttribute="PULSE" subAttribute="/min"/>
+                <BpAttribute data={sysData}/>
+                <BpAttribute data={diaData}/>
+                <BpAttribute data={pulseData}/>
             </View>
         </View>
     )

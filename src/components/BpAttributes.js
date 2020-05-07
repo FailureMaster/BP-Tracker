@@ -5,8 +5,8 @@ import { AppLoading } from 'expo';
 
 
 
-const BpAttributes = ({mainAttribute, subAttribute}) => {
-   
+const BpAttributes = (props) => {
+    const {mainAttribute, subAttribute,identifier} = props.data
         let [fontsLoaded] = useFonts({
           'DS-DIGIB': require('../../assets/fonts/DS-DIGIB.ttf'),
         });
