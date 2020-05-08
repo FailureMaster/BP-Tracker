@@ -6,7 +6,7 @@ import { AppLoading } from 'expo';
 
 
 const BpAttributes = (props) => {
-    const {mainAttribute, subAttribute,identifier} = props.data
+    const {mainAttribute, subAttribute } = props.data
         let [fontsLoaded] = useFonts({
           'DS-DIGIB': require('../../assets/fonts/DS-DIGIB.ttf'),
         });
@@ -22,7 +22,13 @@ const BpAttributes = (props) => {
                     <Text>{subAttribute}</Text>
                 </View>
                 <View style = {styles.inputBoxes} >
-                    <TextInput style={styles.inputStyle} placeholder= "0 0 0"  />
+                    <TextInput 
+                    style={styles.inputStyle} 
+                    placeholder= "0 0 0" 
+                    maxLength = {3} 
+                    keyboardType={'numeric'} 
+                    onChangeText= {(val) => {props.onChangeAttrib(mainAttribute, val)}} 
+                    />
                 </View>
             </View>
         )

@@ -1,12 +1,58 @@
-import React from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import React, {useState, useEffect} from 'react'
+import { View, Text, Image, StyleSheet, Button } from 'react-native'
 import BpAttribute from '../components/BpAttributes'
 
 const HomeScreen = () => {
-    const sysData   = {mainAttribute: "SYS", subAttribute:"mmHg", identifier: 111}
-    const diaData   = {mainAttribute: "DIA", subAttribute:"mmHg", identifier: 222}
-    const pulseData = {mainAttribute: "PULSE", subAttribute:"/min", identifier: 333}
+    
+    const [sys, setSys]       = useState(0)
+    const [dia, setDia]       = useState(0)
+    const [pulse, sestPulse]  = useState(0)
+    const [result, setResult] = useState('')
+
+    const setBpAttrib = (attrib, change) => {
+
+        switch(attrib){
+            case "SYS": 
+                 attrib == "SYS" && setSys(change)
+                break;
+            case "DIA": 
+                  attrib == "DIA" && setDia(change)
+                break;
+            case "PULSE": 
+                 attrib == "PULSE" && sestPulse(change)
+                break;
+           
+        }
+    
+    }//setBpAttrib function closing
+
+    const checkResult = () => {
+        const systolic  = parseInt(sys)
+        const diastolic = parseInt(dia)
+        const hpulse    = parseInt(pulse)
         
+        if(systolic < 120 && diastolic < 80){
+            setResult('normal')
+        }
+        if((systolic == 0 || systolic == '') && (diastolic ==0 || diastolic == '') && (hpulse ==0 || hpulse =='')){
+            setResult('noResult')
+        }    
+        if((systolic >= 120 && systolic <= 139) || (diastolic >= 80 && diastolic <= 89)){
+            setResult('preHighblood')
+        }
+        if(systolic >= 140 || diastolic >=  100){
+            setResult('HighBlood')
+        }
+        
+    }// Check result function closing
+    
+
+
+    
+    const sysData   = {mainAttribute: "SYS", subAttribute:"mmHg" }
+    const diaData   = {mainAttribute: "DIA", subAttribute:"mmHg" }
+    const pulseData = {mainAttribute: "PULSE", subAttribute:"/min" }
+    
     return (
         <View>
             <View style={styles.container}>
@@ -17,15 +63,15 @@ const HomeScreen = () => {
 
             </View>
             <View style={styles.bpAttribute}>
-                <BpAttribute data={sysData}/>
-                <BpAttribute data={diaData}/>
-                <BpAttribute data={pulseData}/>
+                <BpAttribute data={sysData}   onChangeAttrib = {setBpAttrib} />
+                <BpAttribute data={diaData}   onChangeAttrib = {setBpAttrib} />
+                <BpAttribute data={pulseData} onChangeAttrib = {setBpAttrib} />
             </View>
+            <Button title="Check BP" onPress={() => checkResult()}/>
+            <Text>{result}</Text>
         </View>
     )
 }
-
-
     
     const styles = StyleSheet.create({
         container:{
@@ -42,4 +88,5 @@ const HomeScreen = () => {
             marginTop: 20
         }
     })
+
 export default HomeScreen
