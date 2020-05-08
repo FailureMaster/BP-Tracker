@@ -21,7 +21,6 @@ const HomeScreen = () => {
             case "PULSE": 
                  attrib == "PULSE" && sestPulse(change)
                 break;
-           
         }
     
     }//setBpAttrib function closing
@@ -31,12 +30,18 @@ const HomeScreen = () => {
         const diastolic = parseInt(dia)
         const hpulse    = parseInt(pulse)
         
+
         if(systolic < 120 && diastolic < 80){
             setResult('normal')
         }
-        if((systolic == 0 || systolic == '') && (diastolic ==0 || diastolic == '') && (hpulse ==0 || hpulse =='')){
+        if(systolic < 90 || diastolic < 60){
+            setResult('lowBlood')
+        }
+
+        if(!systolic || !diastolic || !hpulse){
             setResult('noResult')
-        }    
+        }  
+        
         if((systolic >= 120 && systolic <= 139) || (diastolic >= 80 && diastolic <= 89)){
             setResult('preHighblood')
         }
@@ -45,13 +50,12 @@ const HomeScreen = () => {
         }
         
     }// Check result function closing
-    
 
 
-    
     const sysData   = {mainAttribute: "SYS", subAttribute:"mmHg" }
     const diaData   = {mainAttribute: "DIA", subAttribute:"mmHg" }
     const pulseData = {mainAttribute: "PULSE", subAttribute:"/min" }
+    
     
     return (
         <View>
