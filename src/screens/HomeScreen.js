@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import BpAttribute from '../components/BpAttributes'
 import BpResultTextAndIcon from '../components/BpResultTextAndIcon'
 const HomeScreen = () => {
@@ -58,20 +59,25 @@ const HomeScreen = () => {
     
     
     return (
+        <KeyboardAwareScrollView behavior={Platform.OS == "ios" ? "padding" : "height"}
+      style={{flex: 1}}> 
         <View>
             <View style={styles.container}>
               <BpResultTextAndIcon bpResult= {result} />
             </View>
+            
             <View style={styles.bpAttribute}>
                 <BpAttribute data={sysData}   onChangeAttrib = {setBpAttrib} />
                 <BpAttribute data={diaData}   onChangeAttrib = {setBpAttrib} />
-                <BpAttribute data={pulseData} onChangeAttrib = {setBpAttrib} />
-                
+                <BpAttribute data={pulseData} onChangeAttrib = {setBpAttrib} />                
             </View>
+                
             <TouchableOpacity activeOpacity={0.6} style={styles.touchableOpacityStyle} onPress={() => checkResult()}> 
                 <Text  style={styles.btnMargin}>Check Bp</Text>
             </TouchableOpacity>
+            
         </View>
+        </KeyboardAwareScrollView>
     )
 }
     
@@ -94,7 +100,9 @@ const HomeScreen = () => {
         },
         touchableOpacityStyle:{
             backgroundColor: '#ec3c24',
-            padding: 10
+            padding: 10,
+            width: 300,
+            alignSelf: "center"
         },
         btnMargin:{
             color: '#fff',
