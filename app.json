@@ -23,6 +23,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "This app is intended for my grandmother only but realized that it will be helpful to all people around the world that have no idea if they get a normal BP or not. Using this app, they can input the result of there blood pressure and instantly see the result with a good user interface. It has no profiling or database yet to be specific in every user but I'm planning to have it in version 2"
   }
 }
