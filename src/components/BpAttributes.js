@@ -3,8 +3,6 @@ import { View, Text, TextInput, StyleSheet } from 'react-native'
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
-
-
 const BpAttributes = (props) => {
     const {mainAttribute, subAttribute } = props.data
         let [fontsLoaded] = useFonts({

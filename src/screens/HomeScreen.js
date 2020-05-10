@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react'
-import { View, Text, Image, StyleSheet, Button } from 'react-native'
+import React, {useState} from 'react'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import BpAttribute from '../components/BpAttributes'
-
+import BpResultTextAndIcon from '../components/BpResultTextAndIcon'
 const HomeScreen = () => {
     
     const [sys, setSys]       = useState(0)
@@ -37,17 +37,17 @@ const HomeScreen = () => {
         if(systolic < 90 || diastolic < 60){
             setResult('lowBlood')
         }
-
-        if(!systolic || !diastolic || !hpulse){
-            setResult('noResult')
-        }  
         
         if((systolic >= 120 && systolic <= 139) || (diastolic >= 80 && diastolic <= 89)){
             setResult('preHighblood')
         }
         if(systolic >= 140 || diastolic >=  100){
             setResult('HighBlood')
-        }
+        } 
+        if(!systolic || !diastolic || !hpulse){
+            setResult('noResult')
+            alert('Please fill all the textbox')
+        }  
         
     }// Check result function closing
 
@@ -60,19 +60,17 @@ const HomeScreen = () => {
     return (
         <View>
             <View style={styles.container}>
-                <Image
-                    style={styles.tinyLogo}
-                    source={require('../assets/img/bp_img.png')}
-                />
-
+              <BpResultTextAndIcon bpResult= {result} />
             </View>
             <View style={styles.bpAttribute}>
                 <BpAttribute data={sysData}   onChangeAttrib = {setBpAttrib} />
                 <BpAttribute data={diaData}   onChangeAttrib = {setBpAttrib} />
                 <BpAttribute data={pulseData} onChangeAttrib = {setBpAttrib} />
+                
             </View>
-            <Button title="Check BP" onPress={() => checkResult()}/>
-            <Text>{result}</Text>
+            <TouchableOpacity activeOpacity={0.6} style={styles.touchableOpacityStyle} onPress={() => checkResult()}> 
+                <Text  style={styles.btnMargin}>Check Bp</Text>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -88,8 +86,19 @@ const HomeScreen = () => {
             height: 150,
             
         },bpAttribute:{
-            padding: 50,
-            marginTop: 20
+            padding: 25
+        },
+        btnContainer:{
+            justifyContent: "center",
+            alignItems: "center",
+        },
+        touchableOpacityStyle:{
+            backgroundColor: '#ec3c24',
+            padding: 10
+        },
+        btnMargin:{
+            color: '#fff',
+            textAlign: "center"
         }
     })
 
