@@ -4,14 +4,15 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web",
     "eject": "expo eject"
   },
   "dependencies": {
+    "@use-expo/font": "^2.0.0",
     "expo": "~37.0.3",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
+    "react-native-keyboard-aware-scroll-view": "^0.9.1",
     "react-native-web": "~0.11.7"
   },
   "devDependencies": {
